@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Load Vue.js from a server (so no local file is needed)-->
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <title>Vue.js Pet Depot</title>
+    </head>
+<body>
+<!-- The element where Vue will mount -->
+    <main>
+        <div id="app">
+            <header>
+            <h1 v-text="sitename"></h1>
+            </header>
+    
+            <figure>
+            <!-- bind 'src' attr to 'product.image' in 'data' -->
+            <img v-bind:src="product.image">
+            </figure>
+            
+            <h2 v-text="product.title"></h2>
+            <p v-html="product.description"></p>
+            <!-- The double curly brackets is used instead of 'v-text' -->
+            <p>Price: {{product.price}}</p>
+    </div>
+</main>
+
+<script type="text/javascript">
+let webstore = new Vue({ // The Vue instance
+el: '#app',// <=== Don't forget this comma // The 'option object': DOM mounting point
+data: {
+    sitename: "Vue.js Pet Depot",
+                product: {
+                    id: 1001,
+                    title: "Cat Food, 25lb bag",
+                    description: "A 25 pound bag of <em>irresistible</em>," + "organic goodness for your cat.",
+                    price: 2000,
+                    image: "imgs/cat-food.png"
+                }
+// the 'data' option
+// the key 'sitename' matches the value of 'v-text' earlier
+//sitename: "Vue.js Pet Depot"
+            }
+        });
+    </script>
+</body>
+</html>
